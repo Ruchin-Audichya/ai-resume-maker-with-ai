@@ -115,6 +115,25 @@ Notes:
 - For multiple allowed origins, set ALLOWED_SITE as comma-separated values.
 - Health check endpoint: /api/health
 
+### Railway quick setup
+
+- This repo includes Railway config files at root:
+    - railway.json
+    - Dockerfile.railway
+- Create a Railway service from this repo and deploy normally (no subdirectory setting required).
+- Set these Railway environment variables:
+
+```plaintext
+MONGODB_URI=<your mongo uri>
+PORT=5001
+JWT_SECRET_KEY=<your jwt secret>
+JWT_SECRET_EXPIRES_IN=1d
+NODE_ENV=production
+ALLOWED_SITE=https://ruchin-audichya.github.io
+```
+
+- If your site URL is https://ruchin-audichya.github.io/ai-resume-maker-with-ai/, keep ALLOWED_SITE as https://ruchin-audichya.github.io
+
 ### 2. Configure GitHub repository variables/secrets
 
 In GitHub repo settings, add:
