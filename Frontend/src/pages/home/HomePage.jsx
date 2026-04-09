@@ -2,8 +2,7 @@ import Header from "@/components/custom/Header";
 import React, { useEffect } from "react";
 import heroSnapshot from "@/assets/heroSnapshot.png";
 import { useNavigate } from "react-router-dom";
-import { FaGithub, FaCircle, FaInfoCircle } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
+import { FaCircle, FaInfoCircle } from "react-icons/fa";
 import { startUser } from "../../Services/login.js";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserData } from "@/features/user/userFeatures.js";
@@ -13,10 +12,7 @@ function HomePage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
-    window.open(
-      "https://github.com/sahidrajaansari/Ai-Resume-Builder",
-      "_blank"
-    );
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -127,16 +123,10 @@ function HomePage() {
         </div>
       </section>
       <footer className="bg-white" aria-labelledby="footer-heading">
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 p-5 flex justify-between">
-          <p className="text-xs leading-5 text-gray-500">
-            &copy; 2024 Ai-Resume-Builder. All rights reserved.
+        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 p-5">
+          <p className="text-sm leading-6 text-gray-600 text-center">
+            Made by Ruchin Auichya, Palak Kumari, Shriya Gakkhar
           </p>
-          <div>
-            <Button variant="secondary" onClick={handleClick}>
-              <FaGithub className="w-4 h-4 mr-1" />
-              GitHub
-            </Button>
-          </div>
         </div>
       </footer>
     </>

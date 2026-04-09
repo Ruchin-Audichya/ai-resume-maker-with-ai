@@ -37,7 +37,9 @@ const router = createBrowserRouter([
     path: "/auth/sign-in",
     element: <AuthPage />,
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL,
+});
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={resumeStore}>
     <React.StrictMode>

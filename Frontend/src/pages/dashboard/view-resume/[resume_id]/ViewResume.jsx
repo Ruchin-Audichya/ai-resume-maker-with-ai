@@ -9,9 +9,9 @@ import { RWebShare } from "react-web-share";
 import { toast } from "sonner";
 
 function ViewResume() {
-  const [resumeInfo, setResumeInfo] = React.useState({});
   const { resume_id } = useParams();
   const dispatch = useDispatch();
+  const shareUrl = `${window.location.origin}/dashboard/view-resume/${resume_id}`;
 
   useEffect(() => {
     fetchResumeInfo();
@@ -42,8 +42,8 @@ function ViewResume() {
               <RWebShare
                 data={{
                   text: "Hello This is My resume",
-                  url: import.meta.env.VITE_BASE_URL + "/dashboard/view-resume/" + resume_id,
-                  title: "Flamingos",
+                  url: shareUrl,
+                  title: "AI Resume Builder",
                 }}
                 onClick={() => toast("Resume Shared Successfully")}
               >

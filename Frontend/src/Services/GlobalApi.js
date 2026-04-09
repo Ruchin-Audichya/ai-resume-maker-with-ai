@@ -1,12 +1,17 @@
 import axios from "axios";
-import { API_KEY } from "@/config/config";
+import { API_KEY, VITE_APP_URL } from "@/config/config";
+
+const headers = {
+  "Content-Type": "application/json",
+};
+
+if (API_KEY) {
+  headers.Authorization = `Bearer ${API_KEY}`;
+}
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL + "api/",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${API_KEY}`,
-  },
+  baseURL: VITE_APP_URL + "api/",
+  headers,
 });
 
 const createNewResume = async (data) => {

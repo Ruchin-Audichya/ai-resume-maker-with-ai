@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUserData } from "./features/user/userFeatures";
 import { startUser } from "./Services/login";
-import { resumeStore } from "./store/store";
-import { Provider } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
@@ -29,19 +27,19 @@ function App() {
       }
     };
     fetchResponse();
-  }, []);
+  }, [dispatch]);
 
-  if (!user) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <>
-      <Provider store={resumeStore}>
-        <Header user={user} />
-        <Outlet />
-        <Toaster />
-      </Provider>
+      <Header user={user} />
+      <Outlet />
+      <Toaster />
     </>
   );
 }

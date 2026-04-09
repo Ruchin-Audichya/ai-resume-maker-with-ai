@@ -25,7 +25,7 @@ AI Resume Builder is a sophisticated web application that leverages artificial i
 
 🔗 Watch a demonstration on [YouTube](https://youtu.be/IBdpMBvtZhU)  
 
-🌐 Live demo: [AI Resume Builder](https://main--ai-resume-builder-07.netlify.app/)  
+🌐 Live demo: Add your deployed minor project URL here  
 
 ![Thumbnail](./Screenshot/Thumbnil.png)
 
@@ -37,7 +37,7 @@ To run AI Resume Builder locally, follow these steps:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/sahidrajaansari/ai-resume-builder.git
+git clone <your-repository-url>
 cd ai-resume-builder
 ```
 
@@ -202,8 +202,7 @@ git push origin feature-name
 
 ### 7. Create a Pull Request (PR)
 
-- Go to the original repository:  
-  **https://github.com/sahidrajaansari/ai-resume-builder**
+- Go to your project repository and open the Pull Requests tab.
 - Click **"New Pull Request"** and select your branch.
 - Add a description and submit your PR.
 
@@ -215,7 +214,10 @@ The maintainers will review your PR. Once approved, it will be merged into the m
 
 ## Developers 👨‍💻👩‍💻
 
-- [@Sahid Raja Ansari](https://www.linkedin.com/in/sahidrajaansari/)
-- [@Shaharyar Alam](https://www.linkedin.com/in/shaharyar-alam-305322208/)
+- Ruchin Auichya
+- Palak Kumari
+- Shriya Gakkhar
+
+Made by Ruchin Auichya, Palak Kumari, Shriya Gakkhar
 
 ---

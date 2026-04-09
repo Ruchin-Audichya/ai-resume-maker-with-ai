@@ -1,14 +1,5 @@
-import { Gem } from "lucide-react";
-import { GEMENI_API_KEY } from "../config/config";
+import { GEMINI_API_KEY } from "../config/config";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-
-const apiKey = GEMENI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey);
-
-const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-});
 
 const generationConfig = {
   temperature: 1,
@@ -18,9 +9,28 @@ const generationConfig = {
   responseMimeType: "application/json",
 };
 
-export const AIChatSession = model.startChat({
-  generationConfig,
-  // safetySettings: Adjust safety settings
-  // See https://ai.google.dev/gemini-api/docs/safety-settings
-  history: [],
+const createFallbackSession = () => ({
+  async sendMessage() {
+    throw new Error(
+      "Gemini API key is missing. Set VITE_GEMINI_API_KEY (or VITE_GEMENI_API_KEY) in Frontend/.env.local."
+    );
+  },
 });
+
+let chatSession = createFallbackSession();
+
+if (GEMINI_API_KEY) {
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+  });
+
+  chatSession = model.startChat({
+    generationConfig,
+    // safetySettings: Adjust safety settings
+    // See https://ai.google.dev/gemini-api/docs/safety-settings
+    history: [],
+  });
+}
+
+export const AIChatSession = chatSession;
