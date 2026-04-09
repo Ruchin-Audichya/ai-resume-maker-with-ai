@@ -36,6 +36,13 @@ jobs:
         run: npm ci
 
       - name: Build frontend
+        env:
+          VITE_APP_URL: ${{ vars.VITE_APP_URL }}
+          VITE_BASE_URL: ${{ vars.VITE_APP_URL }}
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          VITE_GEMENI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
+          VITE_CLERK_PUBLISHABLE_KEY: ${{ vars.VITE_CLERK_PUBLISHABLE_KEY }}
+          VITE_DEMO_AUTH: ${{ vars.VITE_DEMO_AUTH }}
         run: npm run build
 
       - name: Add SPA fallback

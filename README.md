@@ -94,6 +94,45 @@ Now, you can **choose** to set up the project **with or without Docker**.
 
 ---
 
+## Production Deployment (GitHub Pages + Backend Host)
+
+GitHub Pages can host only the frontend static files. The backend must be deployed separately (for example on Render, Railway, or any VPS).
+
+### 1. Deploy backend from Backend/
+
+Use these environment variables on your backend host:
+
+```plaintext
+MONGODB_URI=<your mongo uri>
+PORT=5001
+JWT_SECRET_KEY=<your jwt secret>
+JWT_SECRET_EXPIRES_IN=1d
+NODE_ENV=production
+ALLOWED_SITE=https://ruchin-audichya.github.io
+```
+
+Notes:
+- For multiple allowed origins, set ALLOWED_SITE as comma-separated values.
+- Health check endpoint: /api/health
+
+### 2. Configure GitHub repository variables/secrets
+
+In GitHub repo settings, add:
+
+- Variable VITE_APP_URL = your deployed backend URL ending with /
+    Example: https://your-backend-domain.com/
+- Variable VITE_DEMO_AUTH = false
+- Optional variable VITE_CLERK_PUBLISHABLE_KEY
+- Optional secret VITE_GEMINI_API_KEY
+
+The Pages workflow reads these values during build.
+
+### 3. Re-run GitHub Pages workflow
+
+After setting variables/secrets, run the Deploy Frontend to GitHub Pages workflow again from Actions.
+
+---
+
 ### 🔧 Setup without Docker
 
 #### **Frontend Setup**
